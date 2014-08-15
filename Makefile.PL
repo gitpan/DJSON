@@ -27,7 +27,7 @@ my %WriteMakefileArgs = (
     "JSON" => "2.90",
     "YAML" => "0.90"
   },
-  "VERSION" => "0.0.3",
+  "VERSION" => "0.0.4",
   "test" => {
     "TESTS" => "t/*.t"
   }
