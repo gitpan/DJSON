@@ -1,30 +1,38 @@
-use TestML -run,
-    -require_or_skip => 'JSON',
-    -require_or_skip => 'YAML';
+use TestML;
 
-use DJSON;
-use JSON;
-use YAML;
-# $Pegex::Parser::Debug = 1;
+TestML->new(
+    testml => join('', <DATA>),
+)->run;
 
-sub djson_decode {
-    decode_djson $_[0]->value;
-}
+{
+    package TestML::Bridge;
+    use TestML::Util;
+    use DJSON;
+    use YAML;
+    use JSON;
 
-sub json_decode {
-    decode_json $_[0]->value;
-}
+    sub djson_decode {
+        my ($self, $string) = @_;
+        native decode_djson($string->value);
+    }
 
-sub yaml {
-    my $yaml = YAML::Dump $_[0]->value;
-    $yaml =~
-        s{!!perl/scalar:JSON::XS::Boolean}
-        {!!perl/scalar:boolean}g;
-    return $yaml;
+    sub json_decode {
+        my ($self, $string) = @_;
+        native decode_json($string->value);
+    }
+
+    sub yaml {
+        my ($self, $string) = @_;
+        my $yaml = YAML::Dump $string->value;
+        $yaml =~
+            s{!!perl/scalar:JSON::(?:XS|PP)::Boolean}
+            {!!perl/scalar:boolean}g;
+        return str $yaml;
+    }
 }
 
 __DATA__
-%TestML 1.0
+%TestML 0.1.0
 
 # Make sure the djson parses to what we expect:
 *djson.djson_decode.yaml == *json.json_decode.yaml;

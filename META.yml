@@ -1,24 +1,31 @@
 ---
-abstract: unknown
+abstract: 'Decommisioned. Use JSONY.pm instead.'
 author:
-  - unknown
+  - 'Ingy döt Net <ingy@cpan.org>'
 build_requires:
-  JSON: 0
-  TestML: 0
-  YAML: 0
+  JSON: '2.90'
+  YAML: '0.90'
 configure_requires:
-  ExtUtils::MakeMaker: 0
-dynamic_config: 1
-generated_by: 'ExtUtils::MakeMaker version 6.62, CPAN::Meta::Converter version 2.120921'
-license: unknown
+  ExtUtils::MakeMaker: '6.30'
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 5.019, CPAN::Meta::Converter version 2.132830'
+license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+  version: '1.4'
 name: DJSON
 no_index:
   directory:
-    - t
     - inc
+    - t
+    - xt
+    - example
 requires:
-  Pegex: 0
-version: v0.0.1
+  Pegex: '0.50'
+  boolean: '0.31'
+  perl: v5.8.1
+resources:
+  bugtracker: https://github.com/ingydotnet/djson-pm/issues
+  homepage: https://github.com/ingydotnet/djson-pm
+  repository: https://github.com/ingydotnet/djson-pm.git
+version: 0.0.2

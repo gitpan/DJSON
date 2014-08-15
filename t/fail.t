@@ -1,14 +1,22 @@
-use TestML -run;
+use TestML;
 
-use DJSON;
-# $Pegex::Parser::Debug = 1;
+TestML->new(
+    testml => join('', <DATA>),
+)->run;
 
-sub djson_decode {
-    decode_djson $_[0]->value;
+{
+    package TestML::Bridge;
+    use TestML::Util;
+    use DJSON;
+
+    sub djson_decode {
+        my ($self, $string) = @_;
+        native decode_djson($string->value);
+    }
 }
 
 __DATA__
-%TestML 1.0
+%TestML 0.1.0
 
 # Make sure these strings do not parse as DJSON.
 *djson.djson_decode.Catch.OK;
