@@ -1,3 +1,6 @@
+0.0.8 Tue Aug 19 20:47:26 PDT 2014
+ - Tests needed to `use lib 'inc';`
+
 0.0.7 Sat Aug 16 13:55:20 PDT 2014
  - Remove =travis section
 

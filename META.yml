@@ -28,4 +28,4 @@ resources:
   bugtracker: https://github.com/ingydotnet/djson-pm/issues
   homepage: https://github.com/ingydotnet/djson-pm
   repository: https://github.com/ingydotnet/djson-pm.git
-version: 0.0.7
+version: 0.0.8
